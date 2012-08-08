@@ -1,0 +1,80 @@
+!!!
+html
+	head
+		title fxgotchi
+		link(rel="stylesheet", href="/css/style.css", type="text/css")
+	body
+
+		#header
+			img#logo(src="/img/logo.png")
+			#info
+				h1
+					a(href="/")
+						| fx
+						span gotchi
+				p.stat
+					| Training:
+					span.training false
+				p.stat
+					| Last trained:
+					span.lastTrained unknown
+				p.stat
+					| Progress:
+					span.progress 0
+					| %
+				p fxgotchi is a machine learning bot that uses <a href="http://www.twitter.com/josscrowcroft">@josscrowcroft</a>'s <a href="http://openexchangerates.org/">Open Exchange Rates API</a> in an attempt to predict fluctuations in currency exchange rates.
+				p Obviously I'm sure many people much smarter than me have tried and currently do work on solving this problem. But I wanted to give it a naive go, just for fun.
+				p Rates are checked hourly, and so predictions are for the next hour.
+				p By <a href="http://www.twitter.com/christopherdb">@christopherdb</a>
+
+				a(href="https://twitter.com/share", class="sitem twitter-share-button", data-text="fxgotchi tries to predict curreny rates", data-via="christopherdb", data-related="christopherdb") Tweet
+				script(type="text/javascript")
+					!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				div.google-plusone.sitem
+					div(class="g-plusone sitem", data-size="medium")
+				script(type="text/javascript")
+					(function() {
+						var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+						po.src = 'https://apis.google.com/js/plusone.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+					})();
+				iframe(class="sitem fb-like", src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffxgotchi.aws.af.cm&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=21", scrolling="no", frameborder="0", style="border:none; overflow:hidden; width:200px; height:21px;", allowTransparency="true")
+
+		#prediction
+			h2 
+				| Prediction
+				span.time
+			p 0 (red) is Down 1 (green) is Up, the decimal value represents its probability of either.
+			ul
+				li#notice.down2 
+					a No prediction available (yet) either waiting for first training session or JavaScript is disabled.
+
+		#latestChange
+			h2
+				| Latest Change
+				span.time
+			p The last recorded actual change, red is Down green is Up.
+			ul
+
+		#latestActual
+			h2 
+				| Latest Actual
+				span.time
+			
+			ul
+
+		script(type="text/javascript", src="http://code.jquery.com/jquery.min.js")
+		script(type="text/javascript", src="/js/currencies.js")
+		script(type="text/javascript", src="/js/main.js")
+		script(type="text/javascript")
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-32312817-2']);
+			_gaq.push(['_setDomainName', 'aws.af.cm']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
